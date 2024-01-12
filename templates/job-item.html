@@ -1,0 +1,12 @@
+<div class="border-bottom job-openings-holder-div row">
+  <div class="col-9">
+    <h4>{{ job.get('title') }}</h4>
+    <div><b>Location: </b>{{ job.get('location') }}</div>
+    {% if 'salary' in job %}
+    <div><b>Salary: </b>{{ job.get('salary') }}</div>
+    {% endif %}
+  </div>
+  <div class="col-3">
+    <button type="button" class="btn btn-outline-primary">Apply</button>
+  </div>
+</div>
