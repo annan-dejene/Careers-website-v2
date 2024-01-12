@@ -1,2 +1,2 @@
 # Careers-Website
-A careers website for a company
+Sample careers portal website using Flask web framework
