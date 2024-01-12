@@ -5,31 +5,49 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <title>Careers Website</title>
 </head>
 
 <body>
   <div class="container">
     <header>
-    <h1>Seme Careers</h1>
+    <h1 class="text-center mt-4 mb-4">Seme Careers</h1>
     <img id="banner" src="{{ url_for('static', filename='images/Home-page-pic.jpg') }}" alt="Home-Page-image">
       </header>
   
     <main>
       <section class="about-section">
-        <h2>About Seme Job Portal</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos accusantium, quisquam omnis nemo rem eius possimus ipsum quibusdam ex ad voluptatum dolore odio tenetur mollitia ut necessitatibus expedita consequuntur doloremque.</p>
-      </section>
-  
-      <section class="job-openings">
-        <h2>Open Positions</h2>
-        <p>TODO - Show jobs here</p> 
+        <h2 class="text-center mt-4 mb-4">About Seme Job Portal</h2>
+        <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam voluptate perferendis assumenda, quidem error ipsam. Ullam cupiditate quis, animi porro saepe nemo asperiores ab harum esse fugit perferendis assumenda tempora magnam minima eaque maxime illo consequatur possimus nulla error voluptatibus. Voluptas ut illo voluptatem quia? Quis deleniti voluptate, ipsa accusamus aut quaerat quas consequatur architecto corporis eum itaque mollitia sed?</p>
       </section>
 
-      <div class="contact-us-btn">
-        <button>Contact Us</button>
+      <section class="job-openings mt-4 mb-4">
+        <h2 class="text-center">Open Positions</h2>
+        {% for job in jobs %}
+        <div class="border-bottom job-openings-holder-div row">
+          <div class="col-9">
+            <h4>{{ job.get('title') }}</h4>
+            <div><b>Location: </b>{{ job.get('location') }}</div>
+            {% if 'salary' in job %}
+            <div><b>Salary: </b>{{ job.get('salary') }}</div>
+            {% endif %}
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-outline-primary">Apply</button>
+          </div>
+        </div>
+        {% endfor %}
+      </section>
+
+      <div class="text-center mb-4">
+        <button type="button" class="btn btn-primary btn-lg">Contact Us</button>
+        <p class="mt-2">Copyright 2024, Seme Jobs</p>
       </div>
+  
     </main>
   </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
