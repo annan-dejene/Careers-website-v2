@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include "bootstrap.html" %}
+  <title>{{ job.get('title') }} - Seme Jobs</title>
+</head>
+<body>
+  {% include "nav.html" %}
+  <div class="container mt-5">
+    <h3>{{ job.get('title') }}</h3>
+    <p>{{ job.get('location') }}</p>
+    <h3 class="mb-3">Responsibilities</h3>
+    {% for resp in job.get('responsibilities').split('\n') %}
+    <ul>
+      <li>{{ resp }}</li>
+    </ul>
+    {% endfor %}
+    <h3 class="mb-3">Requirements</h3>
+    {% for req in job.get('requirements').split('\n') %}
+    <ul>
+      <li>{{ req }}</li>
+    </ul>
+    {% endfor %}
+    {% if 'salary' in job %}
+    <h4>Salary </h4>
+    <p>{{ job.get('salary') }} {{ job.get('currency') }}</p>
+    {% endif %}
+   </div>
+  {% include "footer.html" %}
+</body>
+</html>
