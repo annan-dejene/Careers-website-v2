@@ -3,7 +3,7 @@
     <h4>{{ job.get('title') }}</h4>
     <div><b>Location: </b>{{ job.get('location') }}</div>
     {% if 'salary' in job %}
-    <div><b>Salary: </b>{{ job.get('salary') }}</div>
+    <div><b>Salary: </b>{{ job.get('salary') }} {{ job.get('currency') }}</div>
     {% endif %}
   </div>
   <div class="col-3">
